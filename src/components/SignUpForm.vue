@@ -42,13 +42,14 @@
 <script>
 import { ref } from "@vue/reactivity";
 import useSignUp from "../composables/useSignUp";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
     let displayName = ref("");
     let email = ref("");
     let password = ref("");
-
+    let router = useRouter();
     let { error, createAccount } = useSignUp();
 
     let signUp = async () => {
@@ -58,7 +59,7 @@ export default {
         displayName.value
       );
       if (res) {
-        console.log(res.user);
+        router.push("/chatroom");
       }
     };
 
