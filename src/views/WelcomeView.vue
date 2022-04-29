@@ -14,7 +14,7 @@
             </p>
           </div>
           <div v-else>
-            <SignUpFrom />
+            <SignUpForm />
             <p class="mt-4">
               Already have account?
               <span class="changeForm" @click="showForm = !showForm"
@@ -32,11 +32,11 @@
 <script>
 import { ref } from "@vue/reactivity";
 import LoginForm from "../components/LoginForm";
-import SignUpFrom from "../components/SignUpFrom";
+import SignUpForm from "../components/SignUpForm";
 export default {
   components: {
     LoginForm,
-    SignUpFrom,
+    SignUpForm,
   },
   setup() {
     let showForm = ref(true);

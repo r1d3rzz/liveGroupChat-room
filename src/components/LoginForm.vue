@@ -1,7 +1,7 @@
 <template>
   <h3 class="mb-3">Login Your Chat Account</h3>
   <div class="loginForm">
-    <form>
+    <form @submit.prevent="login">
       <div class="inputForm mt-3">
         <input
           type="email"
@@ -20,6 +20,8 @@
         v-model="password"
       />
 
+      <p class="text-danger mt-1" v-if="error">{{ error }}</p>
+
       <div class="d-flex justify-content-end mt-3">
         <button class="btn btn-sm btn-primary">Login</button>
       </div>
@@ -29,12 +31,23 @@
 
 <script>
 import { ref } from "@vue/reactivity";
+import useLogin from "../composables/useLogin";
+
 export default {
   setup() {
     let email = ref("");
     let password = ref("");
 
-    return { email, password };
+    let { error, loginAccount } = useLogin();
+
+    let login = async () => {
+      let res = await loginAccount(email.value, password.value);
+      if (res) {
+        console.log(res.user);
+      }
+    };
+
+    return { email, password, login, error };
   },
 };
 </script>
