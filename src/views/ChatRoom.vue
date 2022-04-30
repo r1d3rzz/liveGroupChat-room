@@ -4,6 +4,7 @@
       <div class="col-md-6 mx-auto">
         <div class="card shadow-sm">
           <NavBar />
+          <DisplayMessage />
           <SendMessage />
         </div>
       </div>
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import DisplayMessage from "../components/DisplayMessage";
 import SendMessage from "../components/SendMessage";
 import { watch } from "@vue/runtime-core";
 import NavBar from "../components/NavBar";
@@ -19,6 +21,7 @@ import getUser from "../composables/getUser";
 import { useRouter } from "vue-router";
 export default {
   components: {
+    DisplayMessage,
     SendMessage,
     NavBar,
   },
