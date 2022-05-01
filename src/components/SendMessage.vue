@@ -1,14 +1,17 @@
 <template>
-  <div>
-    <textarea
-      placeholder="type text and hit enter send message ..."
-      class="form-control bg-light border-0"
-      v-model="message"
-      @keydown.prevent.enter="sendMessage"
-    ></textarea>
+  <form @submit.prevent.self="sendMessage">
+    <div class="input-group mt-3">
+      <input
+        type="text"
+        placeholder="type text and hit enter send message ..."
+        class="form-control bg-light border-0"
+        v-model="message"
+      />
+      <button class="btn btn-sm btn-secondary">send</button>
+    </div>
+  </form>
 
-    <p v-if="error" class="text-danger text-center p-5">{{ error }}</p>
-  </div>
+  <p v-if="error" class="text-danger text-center p-5">{{ error }}</p>
 </template>
 
 <script>

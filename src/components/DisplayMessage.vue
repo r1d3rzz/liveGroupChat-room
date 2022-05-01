@@ -1,5 +1,5 @@
 <template>
-  <div class="messageContainer" ref="messageBox">
+  <div class="messageContainer" ref="messageBox" v-if="messagesFormat.length">
     <div
       class="messages px-2"
       v-for="message in messagesFormat"
@@ -8,9 +8,14 @@
       <SingleMessage :message="message" />
     </div>
   </div>
+
+  <div v-else>
+    <LoadingView />
+  </div>
 </template>
 
 <script>
+import LoadingView from "./LoadingView";
 import SingleMessage from "../views/SingleMessage";
 import { db } from "../firebase/config";
 import { ref } from "@vue/reactivity";
@@ -18,7 +23,10 @@ import { formatDistanceToNow } from "date-fns";
 import { computed, onUpdated } from "@vue/runtime-core";
 
 export default {
-  components: { SingleMessage },
+  components: {
+    LoadingView,
+    SingleMessage,
+  },
   setup() {
     let messageBox = ref(null);
     let messages = ref([]);
