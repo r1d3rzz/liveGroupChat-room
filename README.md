@@ -1,4 +1,16 @@
-# live-chat
+# live-Group-chat
+
+
+## Features
+
+- Register / Login / logout Users
+- you chat with your friends
+- show message created time 
+
+## Will be in Future Update Features
+
+- Who is active Now
+- Chat in Private Rooom
 
 ## Project setup
 ```
