@@ -1,19 +1,23 @@
-import { ref } from "@vue/reactivity";
-import { auth } from "../firebase/config";
+import { ref } from "vue";
+import { auth } from "../../firebase/config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 let error = ref(null);
 
-let loginAccount = async (email, password) => {
+let userLogin = async (email, password) => {
   try {
-    let res = await auth.signInWithEmailAndPassword(email, password);
-    return res;
-  } catch (err) {
-    error.value = err.message;
+    let res = await signInWithEmailAndPassword(auth, email, password);
+    if (res) {
+      return res;
+    }
+  } catch (e) {
+    error.value = e.message;
+    console.log(e.message);
   }
 };
 
-let useLogin = () => {
-  return { error, loginAccount };
+const useLogin = () => {
+  return { error, userLogin };
 };
 
 export default useLogin;
