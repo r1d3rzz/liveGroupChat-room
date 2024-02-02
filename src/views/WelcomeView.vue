@@ -1,56 +1,48 @@
 <template>
-  <div class="welcome container mt-5">
-    <div class="row">
-      <div class="col-md-8 mx-auto">
-        <div class="card shadow-sm p-3">
-          <div v-if="showForm">
-            <LoginForm />
-            <p class="mt-4">
-              not a member?
-              <span class="changeForm" @click="showForm = !showForm"
-                >create</span
-              >
-              account here.
-            </p>
-          </div>
-          <div v-else>
-            <SignUpForm />
-            <p class="mt-4">
-              Already have account?
-              <span class="changeForm" @click="showForm = !showForm"
-                >Login</span
-              >
-              here.
-            </p>
-          </div>
+  <div class="container">
+    <div class="row mt-5">
+      <div v-if="isLogin">
+        <LoginView @login="goToChatroom" />
+        <div class="text-white mt-3 text-center">
+          If you have not Account.
+          <span type="button" class="text-primary" @click="isLogin = !isLogin">
+            Register
+          </span>
+          Here
+        </div>
+      </div>
+      <div v-else>
+        <RegisterView @register="goToChatroom" />
+        <div class="text-white mt-3 text-center">
+          If you have already Account.
+          <span type="button" class="text-primary" @click="isLogin = !isLogin">
+            Login
+          </span>
+          Here
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-import { ref } from "@vue/reactivity";
-import LoginForm from "../components/LoginForm";
-import SignUpForm from "../components/SignUpForm";
+import RegisterView from "../components/auth/RegisterView.vue";
+import LoginView from "../components/auth/LoginView.vue";
+import { ref } from "vue";
+import router from "@/router";
 export default {
   components: {
-    LoginForm,
-    SignUpForm,
+    RegisterView,
+    LoginView,
   },
-  setup() {
-    let showForm = ref(true);
+  setup(props) {
+    let isLogin = ref(true);
 
-    return { showForm };
+    let goToChatroom = () => {
+      router.push({ name: "chatroom" });
+    };
+
+    return { isLogin, goToChatroom };
   },
 };
 </script>
-
-<style>
-.changeForm {
-  font-weight: bold;
-  user-select: none;
-  color: blue;
-  cursor: pointer;
-}
-</style>
+<style></style>

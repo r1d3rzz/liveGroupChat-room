@@ -1,31 +1,29 @@
-# live-Group-chat
+# live-chat
 
+This template should help get you started developing with Vue 3 in Vite.
 
-## Features
+## Recommended IDE Setup
 
-- Register / Login / logout Users
-- you chat with your friends
-- show message created time 
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Will be in Future Update Features
+## Customize configuration
 
-- Who is active Now
-- Chat in Private Rooom
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project setup
-```
-yarn install
-```
+## Project Setup
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+```sh
+npm install
 ```
 
-### Compiles and minifies for production
-```
-yarn build
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
